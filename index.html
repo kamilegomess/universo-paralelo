@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Universo Paralelo</title>
+
+    <meta
+        name="description"
+        content="Universo Paralelo — um lugar para desafios, histórias, mistérios e curiosidades."
+    >
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #0d0a15;
+            --background-soft: #171122;
+            --pink: #e59ac4;
+            --pink-light: #f2c5df;
+            --purple: #8c70b8;
+            --white: #ffffff;
+            --text-soft: #c9c1d2;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--background);
+            color: var(--white);
+            min-height: 100vh;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            width: 100%;
+            padding: 25px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .logo-symbol {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pink);
+            font-size: 21px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* FUNDO */
+
+        .background-glow {
+            position: fixed;
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(117, 81, 160, .32),
+                rgba(20, 14, 32, 0) 70%
+            );
+            top: -250px;
+            right: -150px;
+            pointer-events: none;
+        }
+
+        .background-glow-two {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(215, 112, 168, .10),
+                rgba(20, 14, 32, 0) 70%
+            );
+            bottom: -250px;
+            left: -150px;
+            pointer-events: none;
+        }
+
+        /* HERO */
+
+        main {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            width: min(1150px, 86%);
+            min-height: 600px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            color: var(--pink);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 7vw, 92px);
+            line-height: .95;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        h1 span {
+            color: var(--pink);
+            font-style: italic;
+        }
+
+        .hero-text p {
+            color: var(--text-soft);
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 570px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 20px;
+            background: var(--pink);
+            color: #281626;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: var(--pink-light);
+        }
+
+        /* PLANETA */
+
+        .universe {
+            width: 360px;
+            height: 360px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow:
+                0 0 0 55px rgba(255,255,255,.015),
+                0 0 0 110px rgba(255,255,255,.01);
+        }
+
+        .planet {
+            width: 190px;
+            height: 190px;
+            position: absolute;
+            left: 85px;
+            top: 85px;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 32% 28%,
+                    #d8b8e7,
+                    #8c68a9 45%,
+                    #46335d 75%,
+                    #261b35
+                );
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.6),
+                inset -25px -20px 40px rgba(0,0,0,.25);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 65px;
+            color: #f4c5df;
+        }
+
+        .orbit-dot {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: var(--background-soft);
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dot-one {
+            top: 5px;
+            left: 70px;
+        }
+
+        .dot-two {
+            right: 0;
+            top: 150px;
+        }
+
+        .dot-three {
+            bottom: 25px;
+            left: 50px;
+        }
+
+        /* PORTAIS */
+
+        .portals {
+            background: #faf8fb;
+            color: #29222f;
+            padding: 90px 7%;
+            position: relative;
+            border-radius: 45px 45px 0 0;
+        }
+
+        .portals-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-label {
+            color: #bd6395;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .portals h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 43px;
+            margin: 10px 0 35px;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .portal {
+            background: white;
+            border: 1px solid #eadfea;
+            border-radius: 18px;
+            padding: 24px;
+            min-height: 210px;
+            text-decoration: none;
+            color: #29222f;
+            transition: .2s;
+        }
+
+        .portal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(50,25,60,.10);
+        }
+
+        .portal-icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .portal h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .portal p {
+            color: #776f7e;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .pink-border {
+            border-top: 4px solid #d96ba9;
+        }
+
+        .purple-border {
+            border-top: 4px solid #7b61a9;
+        }
+
+        .blue-border {
+            border-top: 4px solid #6285b4;
+        }
+
+        .gold-border {
+            border-top: 4px solid #c69b5b;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #0d0a15;
+            padding: 30px 7%;
+            color: #aaa1b2;
+            font-size: 13px;
+        }
+
+        .footer-content {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-content strong {
+            color: var(--pink);
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 850px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0 100px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .universe {
+                width: 280px;
+                height: 280px;
+                margin: 20px auto 0;
+            }
+
+            .planet {
+                width: 150px;
+                height: 150px;
+                left: 65px;
+                top: 65px;
+            }
+
+            .portal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            h1 {
+                font-size: 54px;
+            }
+
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portals {
+                padding: 65px 7%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-glow"></div>
+    <div class="background-glow-two"></div>
+
+    <header>
+
+        <a href="#" class="logo">
+            <span class="logo-symbol">✦</span>
+            <span>Universo Paralelo</span>
+        </a>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#portais">Explorar</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-text">
+
+                <div class="eyebrow">
+                    UM LUGAR FORA DO ÓBVIO
+                </div>
+
+                <h1>
+                    Entre em um<br>
+                    <span>Universo Paralelo.</span>
+                </h1>
+
+                <p>
+                    Um lugar para desafios, histórias, mistérios,
+                    curiosidades e tudo aquilo que desperta a
+                    vontade de descobrir alguma coisa nova.
+                </p>
+
+                <a href="#portais" class="button">
+                    Explorar o universo →
+                </a>
+
+            </div>
+
+            <div class="universe">
+
+                <div class="planet">✦</div>
+
+                <div class="orbit-dot dot-one">?</div>
+                <div class="orbit-dot dot-two">🔎</div>
+                <div class="orbit-dot dot-three">✎</div>
+
+            </div>
+
+        </section>
+
+
+        <section class="portals" id="portais">
+
+            <div class="portals-container">
+
+                <div class="section-label">
+                    PRIMEIROS PORTAIS
+                </div>
+
+                <h2>
+                    Escolha por onde entrar.
+                </h2>
+
+                <div class="portal-grid">
+
+                    <a href="#" class="portal pink-border">
+                        <span class="portal-icon">🧩</span>
+
+                        <h3>Desafios</h3>
+
+                        <p>
+                            Jogos de lógica, palavras,
+                            enigmas e outras brincadeiras.
+                        </p>
+                    </a>
+
+
+                    <a href="#" class="portal purple-border">
+                        <span class="portal-icon">🔎</span>
+
+                        <h3>Mistérios</h3>
+
+                        <p>
+                            Investigações, pistas e histórias
+                            para tentar desvendar.
+                        </p>
+                    </a>
+
+
+                    <a href="#" class="portal blue-border">
+                        <span class="portal-icon">📖</span>
+
+                        <h3>Histórias</h3>
+
+                        <p>
+                            Contos, personagens e mundos
+                            esperando para serem criados.
+                        </p>
+                    </a>
+
+
+                    <a href="#" class="portal gold-border">
+                        <span class="portal-icon">🧠</span>
+
+                        <h3>Curiosidades</h3>
+
+                        <p>
+                            Assuntos estranhos, interessantes
+                            e inesperados.
+                        </p>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer id="sobre">
+
+        <div class="footer-content">
+
+            <span>
+                ✦ <strong>Universo Paralelo</strong>
+            </span>
+
+            <span>
+                Um lugar fora do óbvio.
+            </span>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
